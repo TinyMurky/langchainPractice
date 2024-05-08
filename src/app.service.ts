@@ -5,7 +5,8 @@ export class AppService {
   constructor(private readonly langchainService: LangchainService) {}
 
   start(): string {
-    this.langchainService.invoke();
+    //this.langchainService.invoke();
+    this.langchainService.withPromptTemplate();
     return 'Hello World!';
   }
 }

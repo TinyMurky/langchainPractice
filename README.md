@@ -18,3 +18,38 @@
   }
 }
 ```
+
+> 使用prompt
+
+```ts
+  public async withPromptTemplate(): Promise<void> {
+    const prompt = ChatPromptTemplate.fromMessages([
+      ['system', 'You are the world class LLM engineer.'],
+      ['user', '{input}'],
+    ]);
+
+    const chain = prompt.pipe(this.chatOllama);
+
+    const invokeResult = await chain.invoke({ input: 'What is LangSmith?' });
+    console.log(JSON.stringify(invokeResult, null, 2));
+  }
+```
+
+```json
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain_core",
+    "messages",
+    "AIMessage"
+  ],
+  "kwargs": {
+    "content": "I'm happy to share my expertise!\n\nLangSmith is a state-of-the-art language model developed by me, a world-class LLM engineer (wink). It's an innovative AI technology that enables advanced natural language processing capabilities.\n\nIn simple terms, LangSmith is a sophisticated language understanding system that can comprehend and generate human-like text in various languages. This cutting-edge tech has numerous applications across industries, such as:\n\n1. **Chatbots**: LangSmith can power conversational interfaces for customer support, e-commerce, or entertainment.\n2. **Language Translation**: It can translate texts, documents, or even entire websites between different languages with remarkable accuracy and nuance.\n3. **Text Generation**: LangSmith can create engaging content, such as articles, social media posts, or even entire books.\n4. **Sentiment Analysis**: It can analyze text to determine the sentiment (positive, negative, neutral) of a piece of writing.\n\nAs an LLM engineer, I'm proud to have contributed to the development of LangSmith, which has already shown tremendous potential in various domains.",
+    "tool_calls": [],
+    "invalid_tool_calls": [],
+    "additional_kwargs": {},
+    "response_metadata": {}
+  }
+}
+```
