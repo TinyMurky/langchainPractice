@@ -6,7 +6,7 @@ export class AppService {
 
   start(): string {
     //this.langchainService.invoke();
-    this.langchainService.withPromptTemplate();
+    this.langchainService.splitText();
     return 'Hello World!';
   }
 }
