@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { LangchainService } from './langchain.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  providers: [LangchainService]
+  imports: [ConfigModule.forRoot()],
+  providers: [LangchainService],
+  exports: [LangchainService],
 })
 export class LangchainModule {}
